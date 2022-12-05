@@ -139,3 +139,6 @@ function removeH2() {
 //I want to display the temperature as text onto the DOM
 //this will involve, create an element, setting that element to a variable, 
 //then making that variable equal to the data from the fetch
+
+
+
