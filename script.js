@@ -43,7 +43,10 @@ function userinput() {
 
 }
 
-function returnText(){
+// const fetchData;
+
+function returnText()
+{
     input = document.getElementById("userInput").value;
 
 	fetch(`https://weatherapi-com.p.rapidapi.com/current.json?q=${input}`, {
@@ -54,17 +57,18 @@ function returnText(){
 		}
 	})
 	
-
 	 	.then(response => response.json())
-		// .then(data => window.data)
+
 		.then((data) =>  {
 			console.log(data);
+
 			//setting current Temp
 			let currentTemp = data.current.temp_c;
 			let para = document.getElementById("currentTempPara");
 			let h2 = document.getElementById("temp");
 			h2.innerHTML = currentTemp;
 			console.log(currentTemp)
+
 
 		//setting cityName and countryName
 
@@ -83,10 +87,11 @@ function returnText(){
 			showHideTemp();
 
 			document.getElementById("timeButton") ? "" : createCurrentTimeButton();
-
+			timeButton = document.getElementById("timeButton");
+			timeButton.addEventListener('mouseover', mouseOverFunction);
 		})
 	 	.catch(err => console.error(err));
-
+	}
 	
 		//show/hide temp text
 
@@ -103,18 +108,58 @@ function returnText(){
 		Button.textContent="Hover over here to get the Local Time";
 		Button.id = "timeButton";
 		time.appendChild(Button);
-		currentTimeButtonEventListener();
 	}
 	
-	function currentTimeButtonEventListener() {
-		const timeButton = document.getElementById("timeButton");
-		console.log("currentTimeButtonEventListener")
-		timeButton.addEventListener(onmouseover, 
+	//variables for mouseOverFunction
+	
+
+	function mouseOverFunction() {
+		input = document.getElementById("userInput").value;
+
+		fetch(`https://weatherapi-com.p.rapidapi.com/current.json?q=${input}`, {
+			method: 'GET',
+			headers: {
+				'X-RapidAPI-Key': '83a3548fb3msh4cc44d3bbaad65ep17ec72jsn568624b2044a',
+				'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
+			}
+		})
 		
+		.then((response)=> response.json())
+		.then((data)=> {
+			let localTime = data.location.localtime;
+			let localTimeArray = JSON.stringify(localTime);
+			let splitlocalTimeArray = localTime.split(" ");
+			let time = splitlocalTimeArray[1];
+
+			document.getElementById("city_time") ? "" : createTimeElement();
 			
-			)   
-	}
-}
+			function createTimeElement() {
+				let cityTime = document.createElement('h2');
+				cityTime.id = "city_time";
+				timeButton.appendChild(cityTime);
+				cityTime.innerHTML = time;
+			}
+			
+
+
+			console.log(time);
+			// console.log("local array = ", localTimeArray);
+			// console.log("split local array = ", splitlocalTimeArray);
+			// console.log(splitlocalTimeArray.length)
+			// console.log(splitlocalTimeArray[0])
+			// console.log(splitlocalTimeArray[1])
+			// console.log(splitlocalTimeArray[2])
+
+
+
+
+
+
+			
+		})
+	}	
+		
+
 
 
 
