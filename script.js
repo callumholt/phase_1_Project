@@ -35,69 +35,13 @@ Follow good coding practices. Keep your code DRY (Do not repeat yourself) by uti
 */
 
 
-// fetch("http://www.7timer.info/bin/api.pl?lon=144.96751000000006&lat=-37.81738999999993&product=astro&output=json")
-//   .then(function (response) {
-//     return response.json();
-//   })
-//   .then((data) => console.log(data));
-
-
-
-/*
-document.querySelector("#cityLocationSubmit").addEventListener(onclick,submitlocation);
-
-let cityName= "";
-
-function submitlocation() {
-	let cityName = document.querySelector("#cityLocation").name;
-	return cityName;
-};
-*/
-//-----
-
-// let cityName = document.getElementById("city").innerHTML;
-// console.log(cityName);
-
-//below i will take form input and store with a js variable:
-
-// document.getElementById("submitButton").addEventListener("onclick", userinput);
-
-
 function userinput() {
 
 	let input = document.getElementById("cityLocation").value;
 	alert(cityLocation)
 	
-	// let fetchUrl = `https://weatherapi-com.p.rapidapi.com/current.json?q=${input}`;
-
-	// fetch(fetchUrl, options)
-	// 	.then(response => response.json())
-	// 	.then(data => alert("this is inside userinput - ", data))
-	// 	.catch(err => console.error(err));
-	
 
 }
-
-//------
-
-/*
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '83a3548fb3msh4cc44d3bbaad65ep17ec72jsn568624b2044a',
-		'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
-	}
-};
-*/
-// let fetchUrl = `https://weatherapi-com.p.rapidapi.com/current.json?q=${cityName}`;
-// console.log(fetchUrl);
-
-// fetch(fetchUrl, options)
-// 	.then(response => response.json())
-// 	.then(response => console.log(response))
-// 	.catch(err => console.error(err));
-
-// let fetchUrl = `https://weatherapi-com.p.rapidapi.com/current.json?q=${input}`;
 
 function returnText(){
     input = document.getElementById("userInput").value;
@@ -109,36 +53,88 @@ function returnText(){
 			'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
 		}
 	})
-
-	// document.querySelector("h2") ? document.querySelector("h2").innerHTML = "" : ""; 
-
 	
 
 	 	.then(response => response.json())
+		// .then(data => window.data)
 		.then((data) =>  {
-			
+			console.log(data);
+			//setting current Temp
 			let currentTemp = data.current.temp_c;
 			let para = document.getElementById("currentTempPara");
 			let h2 = document.getElementById("temp");
-			// let h2 = document.createElement('h2');
 			h2.innerHTML = currentTemp;
-			
 			console.log(currentTemp)
+
+		//setting cityName and countryName
+
+			//cityName
+			let nameOfCity = data.location.name;
+			let cityName = document.getElementById("cityName");
+			cityName.innerHTML = nameOfCity;
+			console.log(nameOfCity)
+			
+			//countryName
+			let nameOfCountry = data.location.country;
+			let countryName = document.getElementById("countryName");
+			countryName.innerHTML = nameOfCountry;
+			console.log(countryName)
+
+			showHideTemp();
+
+			document.getElementById("timeButton") ? "" : createCurrentTimeButton();
+
 		})
-
 	 	.catch(err => console.error(err));
+
 	
+		//show/hide temp text
+
+	function showHideTemp() {
+		let currentTempElement = document.getElementById("currentTemp");
+			if (currentTempElement.style.display === "none") {
+				currentTempElement.style.display = "block";
+			} 
+		  }
+	
+	function createCurrentTimeButton() {
+		let time = document.getElementById("currentTimeButton");
+		let Button = document.createElement("button");
+		Button.textContent="Hover over here to get the Local Time";
+		Button.id = "timeButton";
+		time.appendChild(Button);
+		currentTimeButtonEventListener();
+	}
+	
+	function currentTimeButtonEventListener() {
+		const timeButton = document.getElementById("timeButton");
+		console.log("currentTimeButtonEventListener")
+		timeButton.addEventListener(onmouseover, 
+		
+			
+			)   
+	}
 }
 
-function removeH2() {
-	if (document.querySelector("#currentTempPara:first-child")) {
-		document.querySelector("#currentTempPara:first-child").remove();
-		}
+
+
+
+
+/*
+// Get a reference to the <button> element
+var button = document.getElementById('myButton');
+
+// Create the event listener function
+function handleClick(event) {
+  // Do something when the event occurs
 }
 
-//I want to display the temperature as text onto the DOM
-//this will involve, create an element, setting that element to a variable, 
-//then making that variable equal to the data from the fetch
+// Attach the event listener to the <button> element
+button.addEventListener('click', handleClick);
+
+*/
+
+
 
 
 

@@ -10,29 +10,23 @@
 </head>
 <body>
     <div>
-        <!--  
-        <form id="cityLocationForm">
-
-            <label for="cityLoc">
-                <input type="text" id="cityLocation" name="cityLoc" placeholder="enter your city">
-            </label>
-                <button onclick="userinput()" id="submitButton">Click me to find out current weather</button>
-
-         </form>
-         -->
 
     </div>
 
     <div>
-        <input id="userInput" type="text" placeholder="Text">
+        <input id="userInput" type="text" placeholder="City Country">
         <button onclick="returnText()">Click here to get the current weather in your chosen City</button>
     </div>
 
 
-
-    <div id="currentTemp">
-        <p id="currentTempPara">Current Temperature is:</p>
+    <div id="currentTemp" style="display: none;">
+        <p id="currentTempPara">Current Temperature in <a id="cityName"></a>, <a id="countryName"></a> is:</p>
         <h2 id="temp"></h2>
+
+    </div>
+
+    <div id="currentTimeButton">
+
 
     </div>
 
