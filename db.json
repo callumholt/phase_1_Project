@@ -95,6 +95,60 @@
       "city": "perth",
       "Temp": "16",
       "localTime": "6:21"
+    },
+    {
+      "id": 16,
+      "city": "perth",
+      "Temp": "23",
+      "localTime": "10:23"
+    },
+    {
+      "id": 17,
+      "city": "sydney",
+      "Temp": "28",
+      "localTime": "13:27"
+    },
+    {
+      "id": 18,
+      "city": "sydney",
+      "Temp": "28",
+      "localTime": "13:27"
+    },
+    {
+      "id": 19,
+      "city": "sydney",
+      "Temp": "28",
+      "localTime": "13:27"
+    },
+    {
+      "id": 20,
+      "city": "sydney",
+      "Temp": "28",
+      "localTime": "13:27"
+    },
+    {
+      "id": 21,
+      "city": "Sydney",
+      "Temp": "28",
+      "localTime": "13:31"
+    },
+    {
+      "id": 22,
+      "city": "Sydney",
+      "Temp": "28",
+      "localTime": "13:31"
+    },
+    {
+      "id": 23,
+      "city": "sydney",
+      "Temp": "28",
+      "localTime": "13:32"
+    },
+    {
+      "id": 24,
+      "city": "sydney",
+      "Temp": "28",
+      "localTime": "13:32"
     }
   ]
 }

@@ -189,11 +189,14 @@ function saveToServer() {
 	  }
 
 	  fetch("http://localhost:3000/weather", methodForPostRequest)
-	  console.log("saved to server");
-	  console.log(methodForPostRequest);
-	  console.log(input) //pointer event...?
-	  console.log(currentTemp) //undefined
-	  console.log(time) //undefined
+	  .then((resp)=> resp.json())
+	  .then((data)=>
+	  
+	  {
+		if(data) {
+			alert("Information was successfully saved to your account");
+		}
+	  })
 }
 
 		
