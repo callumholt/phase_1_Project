@@ -63,7 +63,7 @@ function returnText()
 			console.log(data);
 
 			//setting current Temp
-			let currentTemp = data.current.temp_c;
+			currentTemp = data.current.temp_c;
 			let para = document.getElementById("currentTempPara");
 			let h2 = document.getElementById("temp");
 			h2.innerHTML = currentTemp;
@@ -129,7 +129,7 @@ function returnText()
 			let localTime = data.location.localtime;
 			let localTimeArray = JSON.stringify(localTime);
 			let splitlocalTimeArray = localTime.split(" ");
-			let time = splitlocalTimeArray[1];
+			time = splitlocalTimeArray[1];
 
 			document.getElementById("city_time") ? "" : createTimeElement();
 			
@@ -138,26 +138,64 @@ function returnText()
 				cityTime.id = "city_time";
 				timeButton.appendChild(cityTime);
 				cityTime.innerHTML = time;
+
+				//show save button
+
+				let saveButtonDiv = document.getElementById("save")
+				saveButtonDiv.style.display = ""; 
 			}
 			
-
-
 			console.log(time);
-			// console.log("local array = ", localTimeArray);
-			// console.log("split local array = ", splitlocalTimeArray);
-			// console.log(splitlocalTimeArray.length)
-			// console.log(splitlocalTimeArray[0])
-			// console.log(splitlocalTimeArray[1])
-			// console.log(splitlocalTimeArray[2])
-
-
-
-
-
-
-			
+					
 		})
-	}	
+	}
+
+//event listener, listening to the click of button id="save"
+let saveButton = document.getElementById("saveButton")
+saveButton.addEventListener('click',saveToServer);
+
+//console.log("global", input) //pointer event...?
+//console.log("global", currentTemp) //undefined
+//console.log("global", time) //undefined
+
+// save the data to the server function	
+function saveToServer() {
+
+	let methodForPostRequest =
+	{
+		method: 'POST',
+		headers: {
+		  'Content-Type': 'application/json'
+		},
+		body: JSON.stringify({
+			id: "",
+			city: `${input}`,
+			Temp: `${currentTemp}`,
+			localTime: `${time}`,
+		})
+
+		//just for storing if i need to reverse changes.
+	
+
+		/** 
+		 body: JSON.stringify({
+			id: "",
+			city: "Darwin",
+			Temp: "14",
+			localTime: "9:00",
+		})
+		 */
+
+	  }
+
+	  fetch("http://localhost:3000/weather", methodForPostRequest)
+	  console.log("saved to server");
+	  console.log(methodForPostRequest);
+	  console.log(input) //pointer event...?
+	  console.log(currentTemp) //undefined
+	  console.log(time) //undefined
+}
+
 		
 
 
