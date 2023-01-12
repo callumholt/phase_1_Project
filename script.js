@@ -1,10 +1,6 @@
-function userinput() {
+let input
 
-	let input = document.getElementById("cityLocation").value;
-	alert(cityLocation)
-	
 
-}
 
 function returnText()
 {
@@ -23,7 +19,6 @@ function returnText()
 		.then((data) =>  {
 
 			currentTemp = data.current.temp_c;
-			let para = document.getElementById("currentTempPara");
 			let h2 = document.getElementById("temp");
 			h2.innerHTML = currentTemp;
 
@@ -60,10 +55,9 @@ function returnText()
 		time.appendChild(Button);
 	}
 	
-	
 
 	function mouseOverFunction() {
-		input = document.getElementById("userInput").value;
+		let input = document.getElementById("userInput").value;
 
 		fetch(`https://weatherapi-com.p.rapidapi.com/current.json?q=${input}`, {
 			method: 'GET',
@@ -76,7 +70,6 @@ function returnText()
 		.then((response)=> response.json())
 		.then((data)=> {
 			let localTime = data.location.localtime;
-			let localTimeArray = JSON.stringify(localTime);
 			let splitlocalTimeArray = localTime.split(" ");
 			time = splitlocalTimeArray[1];
 

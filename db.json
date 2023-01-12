@@ -239,6 +239,36 @@
       "city": "Miami USA",
       "Temp": "18.3",
       "localTime": "14:36"
+    },
+    {
+      "id": 40,
+      "city": "sydney",
+      "Temp": "24",
+      "localTime": "10:42"
+    },
+    {
+      "id": 41,
+      "city": "sydney",
+      "Temp": "24",
+      "localTime": "10:45"
+    },
+    {
+      "id": 42,
+      "city": "sydney",
+      "Temp": "24",
+      "localTime": "10:49"
+    },
+    {
+      "id": 43,
+      "city": "sydney",
+      "Temp": "24",
+      "localTime": "10:49"
+    },
+    {
+      "id": 44,
+      "city": "sydney",
+      "Temp": "24",
+      "localTime": "10:55"
     }
   ]
 }
